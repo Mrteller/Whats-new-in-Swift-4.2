@@ -22,7 +22,7 @@
 
  ## Требования
 
- Этому playground требуется Xcode 10 или свжий слепок Swift 4.2. Скачать Xcode 10 beta можно здесь <https://developer.apple.com/download/> а слепок Swift 4.2 здесь <https://swift.org/download/#snapshots>.
+ Этому playground требуется Xcode 10 или свежий слепок Swift 4.2. Скачать Xcode 10 beta можно здесь <https://developer.apple.com/download/> а слепок Swift 4.2 здесь <https://swift.org/download/#snapshots>.
 
  ## Обратите внимание
 
