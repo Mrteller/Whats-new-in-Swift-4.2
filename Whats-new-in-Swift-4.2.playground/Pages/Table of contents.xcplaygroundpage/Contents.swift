@@ -3,7 +3,7 @@
 
  Автор [Ole Begemann](https://oleb.net) • Июнь 2018\
  [Исходник на GitHub](https://github.com/ole/whats-new-in-swift-4-2)
- [Переведено на русский](https://laconic.website)
+ [Автор перевода](https://laconic.website)
 
  ## Оглавление
 
