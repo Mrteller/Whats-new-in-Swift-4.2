@@ -1,25 +1,25 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # Dynamic member lookup
+ # Динамический поиск членов (Dynamic member lookup)
 
- [SE-0195](https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md "Introduce User-defined 'Dynamic Member Lookup' Types") introduces the `@dynamicMemberLookup` attribute for type declarations.
+ [SE-0195](https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md "Introduce User-defined 'Dynamic Member Lookup' Types") вводит атрибут `@dynamicMemberLookup` для деклараций типов.
 
- A variable of a `@dynamicMemberLookup` type can be called with _any_ property-style accessor (using dot notation) — the compiler won’t check if a member with the given name exists or not. Instead, the compiler translates such accesses into calls of a subscript accessor that gets passed the member name as a string.
+ Переменная типа `@dynamicMemberLookup` может вызываться с любым геттером (accessor) свойств (используя точечную нотацию) - компилятор не станет проверять существует ли член с указанным имененем или нет. Вместо этого компилятор превращает такие обращения в вызовы геттера по сабскрипту, которому передается имя члена в виде строки.
 
- The goal of this feature is to facilitate interoperability between Swift and dynamic languages such as Python. The [Swift for Tensorflow](https://github.com/tensorflow/swift) team at Google, who has driven this proposal, implemented a Python bridge that makes it possible to [call Python code from Swift](https://github.com/tensorflow/swift/blob/master/docs/PythonInteroperability.md). Pedro José Pereira Vieito packaged this up in a SwiftPM package called [PythonKit](https://github.com/pvieito/PythonKit).
+ Цель этой функции - обеспечить совместимость между Swift и динамическими языками, такими как Python. Команда [Swift for Tensorflow](https://github.com/tensorflow/swift) в Google, выдвинувшая это предложение, реализовала мост Python, который делает возможным вызвать код Pyton из Swift [call Python code from Swift](https://github.com/tensorflow/swift/blob/master/docs/PythonInteroperability.md). Pedro José Pereira Vieito запаковал это в SwiftPM package названный [PythonKit](https://github.com/pvieito/PythonKit).
 
- SE-0195 isn’t required to enable this interoperability, but it makes the resulting Swift syntax much nicer. It’s worth noting that SE-0195 only deals with property-style member lookup (i.e. simple getters and setters with no arguments). A second "dynamic callable" proposal for a dynamic method call syntax is still in the works.
+ SE-0195 не является обязательным для обеспечения такой совместимости, но делает получаемый синтакс Swift намного аккуратнее.but it makes the resulting Swift syntax much nicer. Стоит отметить, что SE-0195 имеет дело только с поиском property-style членов (т.е. простых геттеров и сеттеров без аргументов). Второе предложение, "динамически вызываемое" ("dynamic callable") для синтаксиса вызова динамического метода всё ещё в работе.
 
- Although Python has been the primary focus of the people who worked on the proposal, interop layers with other dynamic languages like Ruby or JavaScript will also be able to take advantage of it.
+ Хотя Python был в центре внимания людей, которые работали над этим предложением, прослойки для взаимодействия с другими динамическими языками, такими как Ruby или JavaScript, также смогут воспользоваться им.
 
- And it’s not limited to this one use case, either. Any type that currently has a string-based subscript-style API could be converted to dynamic member lookup style. SE-0195 shows a `JSON` type as an example where you can drill down into nested dictionaries using dot notation.
+И это также не единственный вариант использования. Любой тип, который в настоящее время имеет стиль API со строками в сабскрипте (string-based subscript-style API), может быть преобразован в стиль динамического поиска членов (dynamic member lookup style). SE-0195 показывает Тип `JSON` в качестве примера, где вы можете детализировать вложенные словари, используя точечную нотацию.
 
- Here’s another example, courtesy of Doug Gregor: an `Environment` type that gives you property-style access to your process’s environment variables. Note that mutations also work.
+ Вот еще один пример, любезно предоставленный Дугом Грегором: Тип `Environment`, который дает вам property-style доступ к переменным среды вашего процесса. Обратите внимание, что мутации также работают.
  */
 import Darwin
 
-/// The current process's environment.
+/// Среда (environment) текущего процесса.
 ///
 /// - Author: Doug Gregor, https://gist.github.com/DougGregor/68259dd47d9711b27cbbfde3e89604e8
 @dynamicMemberLookup
@@ -45,7 +45,7 @@ environment.USER
 environment.HOME
 environment.PATH
 
-// Mutations are allowed if the subscript has a setter
+// Мутации допускаются, если у сабскрипта есть сеттер
 environment.MY_VAR = "Hello world"
 environment.MY_VAR
 
@@ -53,7 +53,11 @@ environment.MY_VAR
  This is a big feature that has the potential to change how Swift is used in fundamental ways if misused. By hiding a fundamentally “unsafe” string-based access behind a seemingly “safe” construct, you may give readers of your code the wrong impression that things have been checked by the compiler.
 
  Before you adopt this in your own code, ask yourself if `environment.USER` is really that much more readable than `environment["USER"]` to be worth the downsides. In most situations, I think the answer should be “no”.
+ 
+ Это большая особенность, имеющая потенциал, способный изменить, использование Swift фундаментальным образом, если применять эту особенность неправильно. Скрывая принципиально "небезопасный"  доступ на основе строк (string-based access) за кажущейся "безопасной" конструкцией, вы можете создать у читателей вашего кода неправильное впечатление, что компилятор всё проверил.
+ 
+ Прежде чем вы примете подобные конструкции в своем собственном коде, спросите себя, действительно ли `environment.USER` намного более читабелен, чем `environment["USER"]`, чтобы быть привносить сопутствующие проблемы. В большинстве ситуаций, я думаю, что ответ должен быть "нет".
  */
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

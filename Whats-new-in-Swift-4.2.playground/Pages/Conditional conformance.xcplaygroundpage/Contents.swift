@@ -1,47 +1,47 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # Conditional conformance enhancements
+ # Усовершенствования, касающиеся условного соответствия
 
- ## Dynamic casts
+ ## Динамические приведения 👻👻 (Dynamic casts)
 
- Conditional protocol conformances ([SE-0143](https://github.com/apple/swift-evolution/blob/master/proposals/0143-conditional-conformances.md "Conditional conformances")) were the headline feature of Swift 4.1. The final piece of the proposal, runtime querying of conditional conformances, has landed in Swift 4.2. This means a dynamic cast to a protocol type (using `is` or `as?`), where the value conditionally conforms to the protocol, will now succeed when the conditional requirements are met.
+ Условные соответсвия протоколу ([SE-0143](https://github.com/apple/swift-evolution/blob/master/proposals/0143-conditional-conformances.md "Conditional conformances")) были заглавной функциональной возможностью Swift 4.1. Последняя часть соответсвующего предложения предложения сThe final piece of the proposal, запрос условных соотвтетвий в runtime, "приземлилась" в Swift 4.2. Это означает динамическое приведение к типу протокола (с использованием `is` или `as?`), где значение условно удовлетворяет протоколу, теперь будет удаваться когда условные требования выполнены.
 
- Example:
+ Пример:
  */
 func isEncodable(_ value: Any) -> Bool {
     return value is Encodable
 }
 
-// This would return false in Swift 4.1
+// Это вернуло бы false в Swift 4.1
 let encodableArray = [1, 2, 3]
 isEncodable(encodableArray)
 
-// Verify that the dynamic check doesn't succeed when the conditional conformance criteria aren't met.
+// Проверим, что динамическая проверка не проходит, если не выполняются критерии соответствия.
 struct NonEncodable {}
 let nonEncodableArray = [NonEncodable(), NonEncodable()]
 assert(isEncodable(nonEncodableArray) == false)
 
 /*:
- ## Synthesized conformances in extensions
+ ## Синтезированные соответствия в расширениях (extensions)
 
- A small but important improvement to compiler synthesized protocol conformances, such as the automatic `Equatable` and `Hashable` conformances introduced in [SE-0185](https://github.com/apple/swift-evolution/blob/master/proposals/0185-synthesize-equatable-hashable.md "Synthesizing Equatable and Hashable conformance").
+ Небольшое, но важное усовершенствовоание к синтезируемым компилятором соответствиям протоколу, такое как автоматические соответствия протоколам `Equatable` и `Hashable` предложенные в [SE-0185](https://github.com/apple/swift-evolution/blob/master/proposals/0185-synthesize-equatable-hashable.md "Synthesizing Equatable and Hashable conformance").
 
- Protocol conformances can now be synthesized in extensions and not only on the type definition (the extension must still be in the same file as the type definition). This is more than a cosmetic change because it allows automatic synthesis of conditional conformances to `Equatable`, `Hashable`, `Encodable`, and `Decodable`.
+ Соответствия протоколам теперь можно синтезировать в расширениях, а не только в определении типа (расширение должно быть в том же файле, что и определение типа). Это больше косметическое изменение, потому что это делает возможным автоматический синтез условных соответствий протоколам `Equatable`, `Hashable`, `Encodable`, и `Decodable`.
 
- This example is from the [What’s New in Swift session at WWDC 2018](https://developer.apple.com/videos/play/wwdc2018/401/). We can conditionally conform `Either` to `Equatable` and `Hashable`:
+ Это пример из [What’s New in Swift session at WWDC 2018](https://developer.apple.com/videos/play/wwdc2018/401/). Мы можем заставить `Either` условно соответствовать протоколам `Equatable` и `Hashable`:
  */
 enum Either<Left, Right> {
     case left(Left)
     case right(Right)
 }
 
-// No code necessary
+// Код не требуется
 extension Either: Equatable where Left: Equatable, Right: Equatable {}
 extension Either: Hashable where Left: Hashable, Right: Hashable {}
 
 Either<Int, String>.left(42) == Either<Int, String>.left(42)
 
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

@@ -1,28 +1,28 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # `#error` and `#warning` directives
+ # Директивы `#error` и `#warning`
 
- [SE-0196](https://github.com/apple/swift-evolution/blob/master/proposals/0196-diagnostic-directives.md "Compiler Diagnostic Directives") introduces `#error` and `#warning` directives for triggering a build error or warning in your source code.
+ [SE-0196](https://github.com/apple/swift-evolution/blob/master/proposals/0196-diagnostic-directives.md "Compiler Diagnostic Directives") вводит директивы `#error` и `#warning` для инициирования ошибки или предупреждения при сборке исходного кода.
 
- For example, use `#warning` to remember an important TODO before committing your code:
+  Например, используйте `#warning`, чтобы не забыть важное действие TODO перед, тем как зафиксировать код:
  */
 func doSomethingImportant() {
-    #warning("TODO: missing implementation")
+    #warning("TODO: отсутствует реализация")
 }
 doSomethingImportant()
 
 /*:
- `#error` can be helpful if your code doesn’t support certain environments:
+ `#error` может быть пригодиться, если ваш код не поддерживает определённые среды (environments):
  */
 #if canImport(UIKit)
     // ...
 #elseif canImport(AppKit)
     // ...
 #else
-    #error("This playground requires UIKit or AppKit")
+    #error("Для этого playground требуется UIKit или AppKit")
 #endif
 
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

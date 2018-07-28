@@ -1,15 +1,16 @@
 /*:
- # What’s new in Swift 4.2
+ # Что нового в Swift 4.2
 
- By [Ole Begemann](https://oleb.net) • June 2018\
- [Source on GitHub](https://github.com/ole/whats-new-in-swift-4-2)
+ Автор [Ole Begemann](https://oleb.net) • Июнь 2018\
+ [Исходник на GitHub](https://github.com/ole/whats-new-in-swift-4-2)
+ [Переведено на русский](https://laconic.website)
 
- ## Contents
+ ## Оглавление
 
  1. [`Bool.toggle`](Bool.toggle)
- 1. [Sequence and Collection algorithms](Sequence%20and%20Collection%20algorithms)
- 1. [Enumerating enum cases](Enumerating%20enum%20cases)
- 1. [Random numbers](Random%20numbers)
+ 1. [Алгоритмы для Sequence и Collection](Sequence%20and%20Collection%20algorithms)
+ 1. [Перечисление всех cases enum](Enumerating%20enum%20cases)
+ 1. [Случайные числа](Random%20numbers)
  1. [Hashable redesign](Hashable%20redesign)
  1. [Conditional conformance enhancements](Conditional%20conformance)
  1. [Dynamic member lookup](Dynamic%20member%20lookup)
@@ -19,16 +20,16 @@
  1. [Immutable `withUnsafePointer`](Immutable%20withUnsafePointer)
 
 
- ## Requirements
+ ## Требования
 
- This playground requires Xcode 10 or a recent Swift 4.2 snapshot. Download the latest Xcode 10 beta from <https://developer.apple.com/download/> or a Swift 4.2 snapshot from <https://swift.org/download/#snapshots>.
+ Этому playground требуется Xcode 10 или свжий слепок Swift 4.2. Скачать Xcode 10 beta можно здесь <https://developer.apple.com/download/> а слепок Swift 4.2 здесь <https://swift.org/download/#snapshots>.
 
- ## Note
+ ## Обратите внимание
 
- This playground focuses on user-facing new features that can easily be demonstrated in a playground. Swift 4.2 ships with more changes, such as new Swift Package Manager features and many under-the-hood improvements.
+ Этот playground фокусируется на новых, ориентированных на программистов особенностях, которые могут быть легко продемонстрированы в формате playground. Swift 4.2 содержит гораздо больше изменений, чем перечислено здесь. Под капотом Swift 4.2 множество усовершенствований, в том числе новые возможности Swift Package Manager.
 
- Check out [the full changelog](https://github.com/apple/swift/blob/master/CHANGELOG.md), as well as [the complete list of proposals implemented for Swift 4.2](https://apple.github.io/swift-evolution/#?version=4.2) (which lists some proposals not mentioned in the changelog).
+ Взгляните на [полный список изменений (changelog)](https://github.com/apple/swift/blob/master/CHANGELOG.md), а также на [полный список реализованных в Swift 4.2 предложений](https://apple.github.io/swift-evolution/#?version=4.2) (который содержит ряд предложений реализованных, но не упомянутых в changelog).
  */
 /*:
- [Next page](@next)
+ [Следущая страница](@next)
  */

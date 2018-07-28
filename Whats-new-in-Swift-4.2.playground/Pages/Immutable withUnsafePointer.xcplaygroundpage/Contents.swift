@@ -1,11 +1,11 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous)
 
- # Calling `withUnsafePointer(to:_:)` and `withUnsafeBytes(of:_:)` with immutable values
+ # Вызов `withUnsafePointer(to:_:)` с `withUnsafeBytes(of:_:)` с неизменяемыми значениями (immutable values)
 
- This is a small thing, but if you ever had to use the top-level functions `withUnsafePointer(to:_:)` and `withUnsafeBytes(of:_:)`, you may have noticed that they required their argument to be a mutable value because the parameter was `inout`.
+ Это мелочь, но если вам когда-либо приходилось использовать функции верхнего уровня `withUnsafePointer(to:_:)` и `withUnsafeBytes(of:_:)`, вы, возможно, заметили, что они требовали, чтобы их аргумент был изменяемым значением, потому что параметр был `inout`.
 
- [SE-0205](https://github.com/apple/swift-evolution/blob/master/proposals/0205-withUnsafePointer-for-lets.md "withUnsafePointer(to:_:) and withUnsafeBytes(of:_:) for immutable values") adds overloads that work with immutable values.
+ [SE-0205](https://github.com/apple/swift-evolution/blob/master/proposals/0205-withUnsafePointer-for-lets.md "withUnsafePointer(to:_:) and withUnsafeBytes(of:_:) for immutable values") добавляет перегрузки (overloads), работающие с неизменяемыми значениями (immutable values).
  */
 let x: UInt16 = 0xabcd
 let (firstByte, secondByte) = withUnsafeBytes(of: x) { ptr in
@@ -15,5 +15,5 @@ String(firstByte, radix: 16)
 String(secondByte, radix: 16)
 
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous)
  */

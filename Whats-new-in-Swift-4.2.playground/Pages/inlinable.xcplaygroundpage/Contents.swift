@@ -1,19 +1,19 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
  # `@inlinable`
 
- [SE-0193](https://github.com/apple/swift-evolution/blob/master/proposals/0193-cross-module-inlining-and-specialization.md "Cross-module inlining and specialization") introduces two new attributes, `@inlinable` and `@usableFromInline`.
+ [SE-0193](https://github.com/apple/swift-evolution/blob/master/proposals/0193-cross-module-inlining-and-specialization.md "Cross-module inlining and specialization") вводит два новых атрибута `@inlinable` и `@usableFromInline`.
 
- These aren’t necessary for application code. Library authors can annotate some public functions as `@inlinable`. This gives the compiler the option to optimize generic code across module boundaries.
+ Они не являются необходимыми для кода приложения. Авторы библиотеки могут помечать некоторые публичные (public) функции, как  `@inlinable`. Это дает компилятору возможность оптимизировать обобщённый код за пределами модуля.
 
- For example, a library that provides a set of collection algorithms could mark those methods as `@inlinable` to allow the compiler to specialize client code that uses these algorithms with types that are unknown when the library is built.
+ Например, библиотека, предоставляющая набор алгоритмов коллекции, может пометить эти методы как `@inlinable`, чтобы компилятор мог специализировать клиентский код, использующий эти алгоритмы с типами, неизвестными при построении библиотеки.
 
- Example (adopted from the example given in SE-0193):
+  Пример (адаптирован из примера, приведенного в SE-0193):
  */
-// Inside CollectionAlgorithms module:
+// Внутри модуля CollectionAlgorithms:
 extension Sequence where Element: Equatable {
-    /// Returns `true` iff all elements in the sequence are equal.
+    /// Возвращает `true`, если все элементы последовательности равны.
     @inlinable
     public func allEqual() -> Bool {
         var iterator = makeIterator()
@@ -34,10 +34,10 @@ Array(repeating: 42, count: 1000).allEqual()
 [1,1,2,1,1].allEqual()
 
 /*:
- Think carefully before you make a function inlinable. Using `@inlinable` effectively makes the body of the function part of your library’s public interface. If you later change the implementation (e.g. to fix a bug), binaries compiled against the old version might continue to use the old (inlined) code, or even a mix of old and new (because `@inlinable` is only a hint; the optimizer decides for each call site whether to inline the code or not).
+ Хорошенько подумайте, прежде чем делать функцию inlinable (т.е поддерживающей подстановку). Использование `@inlinable`  фактически делает тело функции частью открытого интерфейса вашей библиотеки. Если вы позже измените реализацию (например, чтобы исправить ошибку), двоичные файлы, скомпилированные со старой версией, могут продолжать использовать старый (встроенный) код или даже сочетание старого и нового (потому что `@inlinable` - это только подсказка; оптимизатор решает для каждого сайта вызова, следует ли вставлять код или нет).
 
- Because inlinable functions can be emitted into the client binary, they are not allowed to reference declarations that are not visible to the client binary. You can use the `@usableFromInline` annotation to make certain internal declarations in your library “ABI-public”, allowing their use in inlinable functions.
+ Поскольку inlinable функции могут быть эмитированы в клиентский двоичный файл, они не могут ссылаться на объявления, которые не видны в клиентском двоичном файле. Вы можете использовать директиву `@usableFromInline`, чтобы сделать некоторые внутренние объявления в вашей библиотеке "ABI-public", что позволит использовать их в inlinable функциях.
  */
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

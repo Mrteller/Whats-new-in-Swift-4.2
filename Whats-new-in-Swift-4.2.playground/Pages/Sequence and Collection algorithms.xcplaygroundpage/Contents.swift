@@ -1,13 +1,13 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # Sequence and Collection algorithms
+ # Алгоритмы для Sequence и Collection
 
  ## `allSatisfy`
 
- [SE-0207](https://github.com/apple/swift-evolution/blob/master/proposals/0207-containsOnly.md "Add an allSatisfy algorithm to Sequence") adds an `allSatisfy` algorithm to `Sequence`. `allSatisfy` returns `true` if and only if all elements in the sequence satisfy the given predicate. This function is often just called `all` in functional languages.
+ [SE-0207](https://github.com/apple/swift-evolution/blob/master/proposals/0207-containsOnly.md "Add an allSatisfy algorithm to Sequence") добавляет алгоритм `allSatisfy` к последовательности `Sequence`. `allSatisfy` возвращает `true` только тогда, когда ВСЕ элементы последовательности удовтеворяют предикату. Эта фукция часто называется просто `all` в других функциональных языках программирования.
 
- `allSatisfy` nicely complements `contains(where:)`, which can be used to test if any element (or none) satisfies a predicate.
+ `allSatisfy` прекрасно дополняет `contains(where:)`, которая позволяет выяснить удовлетворяет ли хотя бы один элемент предикату.
  */
 let digits = 0...9
 
@@ -18,14 +18,14 @@ let areAllEven = digits.allSatisfy { $0 % 2 == 0 }
 areAllEven
 
 /*:
- ## `last(where:)`, `lastIndex(where:)`, and `lastIndex(of:)`
+ ## `last(where:)`, `lastIndex(where:)` и `lastIndex(of:)`
 
- [SE-0204](https://github.com/apple/swift-evolution/blob/master/proposals/0204-add-last-methods.md "Add last(where:) and lastIndex(where:) Methods") adds a `last(where:)` method to `Sequence`, and `lastIndex(where:)` and `lastIndex(of:)` methods to `Collection`.
+ [SE-0204](https://github.com/apple/swift-evolution/blob/master/proposals/0204-add-last-methods.md "Add last(where:) and lastIndex(where:) Methods") добавляет метод `last(where:)` к последовательности `Sequence` и методы `lastIndex(where:)` и `lastIndex(of:)` к коллекции `Collection`.
  */
 let lastEvenDigit = digits.last { $0 % 2 == 0 }
 lastEvenDigit
 
-let text = "Vamos a la playa"
+let text = "Пойдем на пляж"
 
 let lastWordBreak = text.lastIndex(where: { $0 == " " })
 let lastWord = lastWordBreak.map { text[text.index(after: $0)...] }
@@ -34,9 +34,9 @@ lastWord
 text.lastIndex(of: " ") == lastWordBreak
 
 /*:
- ### Rename `index(of:)` and `index(where:)` to `firstIndex(of:)` and `firstIndex(where:)`
+ ### Переименование `index(of:)` и `index(where:)` в `firstIndex(of:)` и `firstIndex(where:)`
 
- For consistency, SE-0204 also renames `index(of:)` and `index(where:)` to `firstIndex(of:)` and `firstIndex(where:)`.
+ Для единообразия SE-0204 также переименовывает `index(of:)` и `index(where:)` в `firstIndex(of:)` и `firstIndex(where:)`.
 
  */
 let firstWordBreak = text.firstIndex(where: { $0 == " " })
@@ -44,5 +44,5 @@ let firstWord = firstWordBreak.map { text[..<$0] }
 firstWord
 
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

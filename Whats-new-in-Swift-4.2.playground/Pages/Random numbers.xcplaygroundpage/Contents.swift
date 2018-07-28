@@ -1,24 +1,24 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # Random numbers
+ # Случайные числа
 
- Working with random numbers used to be a little painful in Swift because (a) you had to call C APIs directly and (b) there wasn’t a good cross-platform random number API.
+ Работа со случайными числами была слегка болезненна в Swift, поскольку вам (a) приходилось напрямую вызывать C APIs и (b) не было хорошего кросс-платформенного API для случайных чисел.
 
- [SE-0202](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md "Random Unification") adds random number generation to the standard library.
+ [SE-0202](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md "Random Unification") добаляет генерирование случайных чисел в стндартную библиотеку.
 
- ## Generating random numbers
+ ## Генерирование случайных чисел
 
- All number types have a `random(in:)` method that returns a random number in the given range (with a uniform distribution by default):
+ Все числовые типы теперь имеют метод `random(in:)`, который возвращает случайное число в указанном диапазоне (по-умолчанию используется равномерное распределение):
  */
 Int.random(in: 1...1000)
 UInt8.random(in: .min ... .max)
 Double.random(in: 0..<1)
 
 /*:
-This API nicely protects you from a common error when generating random numbers, [modulo bias](https://www.quora.com/What-is-modulo-bias).
+Этот API аккуратно оберегает вас от распростаненных  ошибок при генерировании случайных чисел [смещение по модулю] (https://www.quora.com/What-is-modulo-bias).
 
- `Bool.random` is also a thing:
+ `Bool.random` это тоже вещь:
  */
 func coinToss(count tossCount: Int) -> (heads: Int, tails: Int) {
     var tally = (heads: 0, tails: 0)
@@ -34,33 +34,33 @@ func coinToss(count tossCount: Int) -> (heads: Int, tails: Int) {
 }
 
 let (heads, tails) = coinToss(count: 100)
-print("100 coin tosses — heads: \(heads), tails: \(tails)")
+print("100 подбрасываний монеты — орёл: \(heads), решка: \(tails)")
 
 /*:
- ## Random collection elements
+ ## Случайные элементы коллекции (`Collection`)
 
- Collections get a `randomElement` method (which returns an optional in case the collection is empty, like `min` and `max`):
+ Коллекции (`Collections`) получают метод `randomElement` (который возвращает optional если коллекция пуста, также как это делают `min` and `max`):
  */
 let emotions = "😀😂😊😍🤪😎😩😭😡"
 let randomEmotion = emotions.randomElement()!
 
 /*:
- Use the `shuffled` method to shuffle a sequence or collection:
+ Используйте метод `shuffled`, чтобы перетасовать последовательность `Sequence` или коллекцию:
  */
 let numbers = 1...10
 let shuffled = numbers.shuffled()
 
 /*:
- There’s also a mutating variant named `shuffle`. It’s available on all types that conform to `MutableCollection` and `RandomAccessCollection`:
+ Есть и изменяющий (mutating) вариант под названием `shuffle`. Он доступен на всех типах, соответвующих протоколам `MutableCollection` и `RandomAccessCollection`:
  */
 var mutableNumbers = Array(numbers)
-// Shuffles in place
+// Перемешивает на месте
 mutableNumbers.shuffle()
 
 /*:
- ## Custom random number generators
+ ## Пользовательские нестандарные генераторы случайных чисел
 
- The standard library ships with a default random number generator, `Random.default`, that is probably a good choice for most simple use cases.
+ Стандартная библиотека поставляется с генератором случайных чисел по-умолчанию `Random.default`, который, возможно, является хорошим выбором для большинства простых случаев.
 
  If you have special requirements, you can implement your own random number generator by adopting the `RandomNumberGenerator` protocol. All APIs for generating random values provide an overload that allows users to pass in their preferred random number generator:
  */
@@ -101,5 +101,5 @@ let randomSuit = Suit.random()
 randomSuit.rawValue
 
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

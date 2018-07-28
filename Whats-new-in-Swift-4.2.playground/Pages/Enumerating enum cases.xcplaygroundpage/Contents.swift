@@ -1,9 +1,9 @@
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # Enumerating enum cases
+ # Перечисление всех cases enum 
 
- [SE-0194 — Derived Collection of Enum Cases](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md "Derived Collection of Enum Cases"): The compiler can automatically generate an `allCases` property for enums, providing you with an always-up-to-date list of enum cases. All you have to do is conform your enum to the new `CaseIterable` protocol.
+ [SE-0194 — Derived Collection of Enum Cases](https://github.com/apple/swift-evolution/blob/master/proposals/0194-derived-collection-of-enum-cases.md "Derived Collection of Enum Cases"): Компилятор может автоматически генерировать свойство `allCases` для перечислений enums, обеспечивая вас постоянно актуальным списком всех enum cases. Всё, что для этого нужно - это чтобы ваш enum соответствовал новому протоколу `CaseIterable`.
  */
 enum Terrain: CaseIterable {
     case water
@@ -16,9 +16,11 @@ Terrain.allCases
 Terrain.allCases.count
 
 /*:
- Note that the automatic synthesis only works for enums without associated values — because associated values mean an enum can have a potentially infinite number of possible values.
+ Обратите внимание, что автоматический синтез работает только для enum без связанных значений (associated values) - потому, что связанные значения позволяют перечислению enum потенциально иметь бесконечное число возможных значений.
 
- You can always implement the protocol manually if the list of all possible values is finite. As an example, here’s a conditional conformance for Optionals of types that are themselves `CaseIterable`:
+
+ При желании, вы можете вручную реализовать протокол, если список возможных значений конечный.
+ You can always implement the protocol manually if the list of all possible values is finite. В качестве примера, вот условное соответствие протоколу для завёрнутых в Optionals типов, при том, что сами эти типы соответствуют `CaseIterable`:
  */
 extension Optional: CaseIterable where Wrapped: CaseIterable {
     public typealias AllCases = [Wrapped?]
@@ -27,14 +29,14 @@ extension Optional: CaseIterable where Wrapped: CaseIterable {
     }
 }
 
-// Note: this isn’t optional chaining!
-// We’re accessing a member of the Optional<Terrain> type.
+// Обратите внимание: это не цепочка optional (optional chaining)!
+// Мы обращаемся к переменной типа Optional<Terrain>.
 Terrain?.allCases
 Terrain?.allCases.count
 
 /*:
- (This is a fun experiment, but I doubt an implementation like this would be very useful in practice. Handle with care.)
+ (Эксперимент забавный, но я сомневаюсь, что подобная реализация будет полезна на практике. Используйте с осторожностью.)
  */
 /*:
- [Table of contents](Table%20of%20contents) • [Previous page](@previous) • [Next page](@next)
+ [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */
