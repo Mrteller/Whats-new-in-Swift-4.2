@@ -20,7 +20,7 @@ areAllEven
 /*:
  ## `last(where:)`, `lastIndex(where:)` и `lastIndex(of:)`
 
- [SE-0204](https://github.com/apple/swift-evolution/blob/master/proposals/0204-add-last-methods.md "Add last(where:) and lastIndex(where:) Methods") добавляет метод `last(where:)` к последовательности `Sequence` и методы `lastIndex(where:)` и `lastIndex(of:)` к коллекции `Collection`.
+ [SE-0204](https://github.com/apple/swift-evolution/blob/master/proposals/0204-add-last-methods.md "Add last(where:) and lastIndex(where:) Methods") добавляет метод `last(where:)` к последовательности `Sequence` и добавляет методы `lastIndex(where:)` и `lastIndex(of:)` к коллекции `Collection`.
  */
 let lastEvenDigit = digits.last { $0 % 2 == 0 }
 lastEvenDigit
