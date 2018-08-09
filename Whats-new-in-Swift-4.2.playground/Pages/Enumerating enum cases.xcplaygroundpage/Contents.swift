@@ -20,7 +20,7 @@ Terrain.allCases.count
 
 
  При желании, вы можете вручную реализовать протокол, если список возможных значений конечный.
- You can always implement the protocol manually if the list of all possible values is finite. В качестве примера, вот условное соответствие протоколу для завёрнутых в Optionals типов, при том, что сами эти типы соответствуют `CaseIterable`:
+ В качестве примера, вот условное соответствие протоколу для завёрнутых в Optionals типов, при том, что сами эти типы соответствуют `CaseIterable`:
  */
 extension Optional: CaseIterable where Wrapped: CaseIterable {
     public typealias AllCases = [Wrapped?]

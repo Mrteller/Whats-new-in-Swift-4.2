@@ -62,9 +62,9 @@ mutableNumbers.shuffle()
 
  Стандартная библиотека поставляется с генератором случайных чисел по-умолчанию `Random.default`, который, возможно, является хорошим выбором для большинства простых случаев.
 
- If you have special requirements, you can implement your own random number generator by adopting the `RandomNumberGenerator` protocol. All APIs for generating random values provide an overload that allows users to pass in their preferred random number generator:
+ Если у вас особые требования, вы можете реализовать свой собственный генератор случайных чисел, приняв протокол `RandomNumberGenerator`. Все API для генерации случайных значений обеспечивают перегрузку, которая позволяет пользователям передавать предпочитаемый генератор случайных чисел:
  */
-/// A dummy random number generator that just mimics `Random.default`.
+/// Фиктивный (для примера) генератор случайных чисел, который просто имитирует `Random.default`.
 struct MyRandomNumberGenerator: RandomNumberGenerator {
     var base = Random.default
     mutating func next() -> UInt64 {
@@ -76,9 +76,9 @@ var customRNG = MyRandomNumberGenerator()
 Int.random(in: 0...100, using: &customRNG)
 
 /*:
- ## Extending your own types
+ ## Расширение собственных типовExtending your own types
 
- You can provide a random data API for your own types by following the same pattern:
+ Можно предоставить API случайных данных для собственных типов, следуя тому же шаблону:
  */
 enum Suit: String, CaseIterable {
     case diamonds = "♦"
@@ -87,7 +87,7 @@ enum Suit: String, CaseIterable {
     case spades = "♠"
 
     static func random<T: RandomNumberGenerator>(using generator: inout T) -> Suit {
-        // Using CaseIterable for the implementation
+        // Использование CaseIterable для реализации
         return allCases.randomElement(using: &generator)!
 
     }
