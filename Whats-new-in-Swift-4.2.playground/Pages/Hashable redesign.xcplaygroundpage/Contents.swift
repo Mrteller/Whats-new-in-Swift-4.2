@@ -1,7 +1,7 @@
 /*:
  [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
 
- # Реконструкция `Hashable`
+ # Редизайн `Hashable`
 
  Синтезируемые компилятором соответствия протоколам `Equatable` и `Hashable`, введённые в Swift 4.1 ([SE-0185](https://github.com/apple/swift-evolution/blob/master/proposals/0185-synthesize-equatable-hashable.md "Synthesizing Equatable and Hashable conformance")) разительно сокращают количество реализаций `Hashable`, которые вы должны писать вручную.
 

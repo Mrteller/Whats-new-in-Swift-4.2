@@ -25,7 +25,7 @@ assert(isEncodable(nonEncodableArray) == false)
 /*:
  ## Синтезированные соответствия в расширениях (extensions)
 
- Небольшое, но важное усовершенствовоание к синтезируемым компилятором соответствиям протоколу, такое как автоматические соответствия протоколам `Equatable` и `Hashable` предложенные в [SE-0185](https://github.com/apple/swift-evolution/blob/master/proposals/0185-synthesize-equatable-hashable.md "Synthesizing Equatable and Hashable conformance").
+ Небольшое, но важное усовершенствование к синтезируемым компилятором соответствиям протоколу, такое как автоматическое соответствие протоколам `Equatable` и `Hashable` предложенные в [SE-0185](https://github.com/apple/swift-evolution/blob/master/proposals/0185-synthesize-equatable-hashable.md "Synthesizing Equatable and Hashable conformance").
 
  Соответствия протоколам теперь можно синтезировать в расширениях, а не только в определении типа (расширение должно быть в том же файле, что и определение типа). Это больше косметическое изменение, потому что это делает возможным автоматический синтез условных соответствий протоколам `Equatable`, `Hashable`, `Encodable`, и `Decodable`.
 

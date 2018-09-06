@@ -16,7 +16,7 @@ UInt8.random(in: .min ... .max)
 Double.random(in: 0..<1)
 
 /*:
-Этот API аккуратно оберегает вас от распростаненных  ошибок при генерировании случайных чисел [смещение по модулю] (https://www.quora.com/What-is-modulo-bias).
+Этот API аккуратно оберегает вас от распростаненных ошибок при генерировании случайных чисел, таких как [смещение по модулю] (https://www.quora.com/What-is-modulo-bias).
 
  `Bool.random` это тоже вещь:
  */
@@ -76,7 +76,7 @@ var customRNG = MyRandomNumberGenerator()
 Int.random(in: 0...100, using: &customRNG)
 
 /*:
- ## Расширение собственных типовExtending your own types
+ ## Расширение собственных типов
 
  Можно предоставить API случайных данных для собственных типов, следуя тому же шаблону:
  */

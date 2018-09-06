@@ -13,7 +13,7 @@ func doSomethingImportant() {
 doSomethingImportant()
 
 /*:
- `#error` может быть пригодиться, если ваш код не поддерживает определённые среды (environments):
+ `#error` может пригодиться, если ваш код не поддерживает определённые среды (environments):
  */
 #if canImport(UIKit)
     // ...

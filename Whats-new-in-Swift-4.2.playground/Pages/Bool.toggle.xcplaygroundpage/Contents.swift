@@ -23,7 +23,7 @@ view.layer.isHidden
 
 // Теперь:
 view.layer.isHidden.toggle()
-
+view.layer.isHidden
 /*:
  [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
  */

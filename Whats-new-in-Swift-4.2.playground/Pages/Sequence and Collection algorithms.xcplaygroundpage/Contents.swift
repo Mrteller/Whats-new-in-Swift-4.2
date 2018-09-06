@@ -5,7 +5,7 @@
 
  ## `allSatisfy`
 
- [SE-0207](https://github.com/apple/swift-evolution/blob/master/proposals/0207-containsOnly.md "Add an allSatisfy algorithm to Sequence") добавляет алгоритм `allSatisfy` к последовательности `Sequence`. `allSatisfy` возвращает `true` только тогда, когда ВСЕ элементы последовательности удовтеворяют предикату. Эта фукция часто называется просто `all` в других функциональных языках программирования.
+ [SE-0207](https://github.com/apple/swift-evolution/blob/master/proposals/0207-containsOnly.md "Add an allSatisfy algorithm to Sequence") добавляет алгоритм `allSatisfy` к последовательности `Sequence`. `allSatisfy` возвращает `true` только тогда, когда ВСЕ элементы последовательности удовлетворяют предикату. Эта фукция часто называется просто `all` в других функциональных языках программирования.
 
  `allSatisfy` прекрасно дополняет `contains(where:)`, которая позволяет выяснить удовлетворяет ли хотя бы один элемент предикату.
  */
