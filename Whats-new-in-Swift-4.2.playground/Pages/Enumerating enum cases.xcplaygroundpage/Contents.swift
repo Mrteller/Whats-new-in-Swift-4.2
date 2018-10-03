@@ -36,6 +36,8 @@ Terrain?.allCases.count
 
 /*:
  (Эксперимент забавный, но я сомневаюсь, что подобная реализация будет полезна на практике. Используйте с осторожностью.)
+ 
+  Более детальная статься о `CaseIterable`: [Enumerating enum cases in Swift](https://oleb.net/blog/2018/06/enumerating-enum-cases/).
  */
 /*:
  [Оглавление](Table%20of%20contents) • [Предыдущая страница](@previous) • [Следущая страница](@next)
