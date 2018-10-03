@@ -66,7 +66,7 @@ mutableNumbers.shuffle()
  */
 /// Фиктивный (для примера) генератор случайных чисел, который просто имитирует `Random.default`.
 struct MyRandomNumberGenerator: RandomNumberGenerator {
-    var base = Random.default
+    var base = SystemRandomNumberGenerator()
     mutating func next() -> UInt64 {
         return base.next()
     }
@@ -93,7 +93,8 @@ enum Suit: String, CaseIterable {
     }
 
     static func random() -> Suit {
-        return Suit.random(using: &Random.default)
+        var rnd = SystemRandomNumberGenerator()
+        return Suit.random(using: &rnd)
     }
 }
 
