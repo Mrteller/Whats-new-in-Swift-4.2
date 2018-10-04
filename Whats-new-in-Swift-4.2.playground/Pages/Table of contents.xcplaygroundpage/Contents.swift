@@ -1,7 +1,7 @@
 /*:
  # Что нового в Swift 4.2
 
- Автор [Ole Begemann](https://oleb.net) • Июнь 2018\
+ Автор [Ole Begemann](https://oleb.net) • Июнь-Сентябрь 2018\
  [Исходник на GitHub](https://github.com/ole/whats-new-in-swift-4-2)
  [Автор перевода](https://laconic.website)
 
@@ -15,6 +15,7 @@
  1. [Условное соответствие (протоколам)](Conditional%20conformance)
  1. [Dynamic member lookup](Dynamic%20member%20lookup)
  1. [`#error` and `#warning`](%23error%20and%20%23warning)
+ 1. [Директива для версии компилятора `#if compiler`](%23if%20compiler%20version%20directive)
  1. [`MemoryLayout.offset(of:)`](MemoryLayout.offset)
  1. [`@inlinable`](inlinable)
  1. [Immutable `withUnsafePointer`](Immutable%20withUnsafePointer)
