@@ -14,6 +14,7 @@
  1. [Hashable redesign](Hashable%20redesign)
  1. [Условное соответствие (протоколам)](Conditional%20conformance)
  1. [Dynamic member lookup](Dynamic%20member%20lookup)
+ 1. [Неявно развёрнутые (implicitly unwrapped) optionals](Implicitly%20unwrapped%20optionals)
  1. [`#error` and `#warning`](%23error%20and%20%23warning)
  1. [Директива для версии компилятора `#if compiler`](%23if%20compiler%20version%20directive)
  1. [`MemoryLayout.offset(of:)`](MemoryLayout.offset)
